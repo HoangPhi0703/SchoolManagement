@@ -103,9 +103,8 @@ public class AdminView {
             out.println("""
                     1.Add Student
                     2.print number of Students
-                    3.Display all students
-                    4.Display students by name
-                    5.Delete student
+                    3.Display students by name
+                    4.Delete student
                     0.back to main""");
 
             try {
@@ -116,10 +115,8 @@ public class AdminView {
                 } else if (choice == 2) {
                     out.println("the number of students is: " + studentList.getNumberOfStudents());
                 } else if (choice == 3) {
-                    printStudents(studentList.getStudents());
-                } else if (choice == 4) {
                     DisplayStudentsByName();
-                } else if (choice == 5) {
+                } else if (choice == 4) {
                     deleteStudent();
                 } else if (choice == 0) {
                     break;
