@@ -2,12 +2,12 @@ package main.java.view;
 
 import main.java.controller.ExamGradeList;
 import main.java.controller.ExamList;
-//import main.java.controller.StudentAttendanceList;
 import main.java.controller.StudentList;
 import main.java.model.Exam;
 import main.java.model.ExamGrade;
 import main.java.model.Staff;
-//import main.java.model.StudentAttendance;
+import main.java.controller.TimeTableList;
+import main.java.model.TimeTable;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,7 +19,8 @@ public class TeacherView {
     StudentList studentList = new StudentList();
     ExamList examList = new ExamList();
     ExamGradeList examGradeList = new ExamGradeList();
-
+    TimeTableList timeTableList = new TimeTableList();
+    
     PrintWriter out = null;
     BufferedReader in = null;
     public TeacherView(Staff teacher){
@@ -49,18 +50,20 @@ public class TeacherView {
         int choice = -1;
         while(choice !=99){
             out.println("_______Student Operations________");
-            out.println("1.Add exam\n2.print number of Students\n3.print exams\n6.add grade exam\n7.delete exam \n0.back to main");
+            out.println("1.Add exam\n2.print number of Students\n3. print TimeTable\n4.print exams\n5.add grade exam\n6.delete exam \n0.back to main");
             out.println("@r#");
             choice = Integer.parseInt(in.readLine());
             if (choice == 1){
                 addExam();
             }else if (choice ==2){
                 out.println("the number of students is: "+studentList.getNumberOfStudents());
-            }else if (choice==3){
+            }else if (choice ==3){
+                timeTableList.printTimeTable(out);
+            }else if (choice==4){
                 examList.printExam(out);
-            }else if (choice==6){
+            }else if (choice==5){
                 gradeExam();
-            }else if (choice==7){
+            }else if (choice==6){
                 deleteExam();
             }else if (choice ==0){ break;}
         }// end of while
