@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Map;
 
+import main.java.model.Staff;
 import main.java.model.TimeTable;
 
 public class TimeTableList {
@@ -26,6 +27,7 @@ public class TimeTableList {
         Map<String,String> map4 = Map.of("math","8:00", "english","9:00", "kurdish","10:00","Arabic","11:00","science","12:00","art","01:00");
         timeTables.add(new TimeTable(5,map4));
     }
+   
 
     public void addTimeTable(TimeTable timeTable){
         readFromFile();
@@ -37,7 +39,19 @@ public class TimeTableList {
         readFromFile();
         return timeTables;
     }
-
+    public void printTimeTable(PrintWriter out){
+        readFromFile();
+        if(timeTables.isEmpty()){
+            out.println("there is no record of timetable");
+        }else{
+            System.out.println("---------------------------------------------------------------\n"
+                   );
+            for(TimeTable s:timeTables){
+                out.println(s.getSubjects()+ "\n");
+            }
+            out.println("================================================================");
+        }
+    }
     public void saveToFile(){
         try {
             FileOutputStream fos = new FileOutputStream("src/main/java/datafile/timetables.txt");
